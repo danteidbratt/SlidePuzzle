@@ -9,6 +9,10 @@ public class Bricka extends JLabel {
 
     public Bricka(int siffra) {
         this.siffra = siffra;
+        setLayout();
+    }
+    
+    private void setLayout(){
         if(siffra == 16){
             this.setText("");
             this.setBackground(Color.BLACK);
