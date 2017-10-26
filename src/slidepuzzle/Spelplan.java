@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class Spelplan extends JPanel {
 
+
     Bricka[][] brickor;
 
     Spelplan(int rows, int cols) {
@@ -22,5 +23,14 @@ public class Spelplan extends JPanel {
                 add(bricka = new Bricka(a++));
             }
         }
+    }
+    
+    
+    
+    
+    
+    
+    static void shuffle() {
+        
     }
 }
