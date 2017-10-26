@@ -5,14 +5,14 @@ import javax.swing.*;
 
 public class Bricka extends JLabel {
     
-    private final int siffra;
+    private int siffra = 0;
 
     public Bricka(int siffra) {
         this.siffra = siffra;
-        setLayout();
+        setBasics();
     }
     
-    private void setLayout(){
+    private void setBasics(){
         this.setText(String.valueOf(this.siffra));
         this.setHorizontalAlignment(SwingConstants.CENTER);
         if(siffra < 16){
