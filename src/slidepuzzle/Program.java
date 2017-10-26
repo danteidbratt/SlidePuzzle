@@ -1,6 +1,7 @@
 package slidepuzzle;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.*;
 
     public class Program extends JFrame{
@@ -10,7 +11,7 @@ import javax.swing.*;
     public void Komponenter(){
         setLayout(new BorderLayout());
         setVisible(true);
-//        pack();
+        
         setSize(400,400);
         setLocationRelativeTo(null);
 

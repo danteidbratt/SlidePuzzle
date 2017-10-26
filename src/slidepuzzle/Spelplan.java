@@ -1,24 +1,26 @@
 package slidepuzzle;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
 
 public class Spelplan extends JPanel {
 
-    String[][] bricka;
+    Bricka[][] brickor;
 
     Spelplan(int rows, int cols) {
-        setSize(400, 200);
-        setLayout(new GridLayout(rows, cols));
+        brickor = new Bricka[rows][cols];
         
-
+        setSize(400, 400);
+        setLayout(new GridLayout(rows, cols, 5, 5));
+        setBackground(Color.BLACK);
+        
         int a = 1;
-        bricka = new String[4][4];
-        for (String[] strings : bricka) {
-            for (String string : strings) {
-                string = "" + ++a;
+        
+        for (Bricka[] rad : brickor) {
+            for (Bricka bricka : rad) {
+                add(bricka = new Bricka(a++));
             }
         }
-
     }
 }
