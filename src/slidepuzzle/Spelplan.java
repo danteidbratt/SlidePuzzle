@@ -30,6 +30,7 @@ public class Spelplan extends JPanel {
                 add(bricka = new Bricka(a++));
             }
         }
+        System.out.println(brickor[0][0].getText());
     }
     
     

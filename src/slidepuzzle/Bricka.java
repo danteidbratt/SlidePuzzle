@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Bricka extends JLabel {
     
-    private final int siffra;
+    private int siffra = 0;
 
     public Bricka(int siffra) {
         this.siffra = siffra;
