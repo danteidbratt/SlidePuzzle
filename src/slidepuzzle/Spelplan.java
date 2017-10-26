@@ -10,6 +10,7 @@ public class Spelplan extends JPanel {
     Spelplan(int rows, int cols) {
         setSize(400, 200);
         setLayout(new GridLayout(rows, cols));
+        
 
         int a = 1;
         bricka = new String[4][4];
