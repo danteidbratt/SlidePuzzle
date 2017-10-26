@@ -10,7 +10,7 @@ import javax.swing.*;
     public void Komponenter(){
         setLayout(new BorderLayout());
         setVisible(true);
-//        pack();
+        
         setSize(400,400);
         setLocationRelativeTo(null);
 

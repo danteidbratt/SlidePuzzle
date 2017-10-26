@@ -18,6 +18,5 @@ public class Spelplan extends JPanel {
                 string = "" + ++a;
             }
         }
-
     }
 }
