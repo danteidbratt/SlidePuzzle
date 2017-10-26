@@ -2,7 +2,6 @@ package slidepuzzle;
 
 import java.awt.Color;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class Bricka extends JLabel {
     
@@ -10,9 +9,16 @@ public class Bricka extends JLabel {
 
     public Bricka(int siffra) {
         this.siffra = siffra;
-        this.setText(String.valueOf(this.siffra));
+        if(siffra == 16){
+            this.setText("");
+            this.setBackground(Color.BLACK);
+            this.setOpaque(true);
+        }
+        else{
+            this.setText(String.valueOf(this.siffra));
+            setBackground(Color.red);
+            setOpaque(true);
+        }
         this.setHorizontalAlignment(SwingConstants.CENTER);
-        setBackground(Color.red);
-        setOpaque(true);
     }
 }
