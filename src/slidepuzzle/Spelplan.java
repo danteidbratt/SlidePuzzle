@@ -7,12 +7,21 @@ import javax.swing.*;
 public class Spelplan extends JPanel {
 
     Bricka[][] brickor;
+    int xLength;
+    int yLength;
 
-    Spelplan(int rows, int cols) {
-        brickor = new Bricka[rows + 2][cols + 2];
+    public Spelplan(int rows, int cols) {
+        brickor = new Bricka[rows][cols];
+        xLength = cols;
+        yLength = rows;
+        setBasics();
+    }
+    
+    private void setBasics(){
+        brickor = new Bricka[yLength + 2][xLength + 2];
 
         setSize(400, 400);
-        setLayout(new GridLayout(rows, cols, 5, 5));
+        setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
 
         int a = 1;
