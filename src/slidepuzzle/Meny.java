@@ -1,6 +1,7 @@
 package slidepuzzle;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 public class Meny extends JPanel{
@@ -13,5 +14,13 @@ public class Meny extends JPanel{
         setLayout(new GridLayout(1, 2));
         add(shuffle);
         add(cancel);
+        
+        cancel.addActionListener((ActionEvent ae) -> {
+            System.exit(0);
+        });
+        
+        shuffle.addActionListener((ActionEvent ae) -> {
+            Spelplan.shuffle();
+        });
     }
 }

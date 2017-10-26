@@ -13,16 +13,11 @@ public class Bricka extends JLabel {
     }
     
     private void setLayout(){
-        if(siffra == 16){
-            this.setText("");
-            this.setBackground(Color.BLACK);
-            this.setOpaque(true);
-        }
-        else{
-            this.setText(String.valueOf(this.siffra));
+        this.setText(String.valueOf(this.siffra));
+        this.setHorizontalAlignment(SwingConstants.CENTER);
+        if(siffra < 16){
             setBackground(Color.red);
             setOpaque(true);
         }
-        this.setHorizontalAlignment(SwingConstants.CENTER);
     }
 }
