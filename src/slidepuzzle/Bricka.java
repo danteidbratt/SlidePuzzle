@@ -9,10 +9,10 @@ public class Bricka extends JLabel {
 
     public Bricka(int siffra) {
         this.siffra = siffra;
-        setLayout();
+        setBasics();
     }
     
-    private void setLayout(){
+    private void setBasics(){
         this.setText(String.valueOf(this.siffra));
         this.setHorizontalAlignment(SwingConstants.CENTER);
         if(siffra < 16){
