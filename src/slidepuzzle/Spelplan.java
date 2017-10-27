@@ -33,7 +33,7 @@ public class Spelplan extends JPanel {
         setSize(400, 400);
         setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
-
+        
         for (Bricka[] brickor1 : brickor) {
             for (int j = 0; j < brickor.length; j++) {
                 brickor1[j] = new Bricka(0);
@@ -59,12 +59,13 @@ public class Spelplan extends JPanel {
             }
         }
     }
-
+    
+    
     MouseAdapter ma = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
-
+        
         @Override
         public void mousePressed(MouseEvent e) {
             for (int i = 1; i < brickor.length - 1; i++) {
@@ -76,8 +77,6 @@ public class Spelplan extends JPanel {
                     }
                 }
             }
-            System.out.println("\n" + clickedY + "\t" + clickedX);
-            System.out.println(emptyY + "\t" + emptyX);
         }
 
         @Override
@@ -90,8 +89,9 @@ public class Spelplan extends JPanel {
                         if (isMovable()) {
                             slide();
                             move();
-                            revalidate();
-                            repaint();
+                            if(isSolved()){
+                                JOptionPane.showMessageDialog(null, "Du vann!");
+                            }
                             return;
                         }
                     }
@@ -135,7 +135,17 @@ public class Spelplan extends JPanel {
         revalidate();
         repaint();
     }
-    MouseAdapter Neigbhourlyss = new MouseAdapter() {
-
-    };
+    
+    public boolean isSolved(){
+        int x = 0;
+        for (int i = 1; i < brickor.length - 1; i++) {
+            for (int j = 1; j < brickor[i].length - 1; j++) {
+                if(!brickor[i][j].getText().equals(String.valueOf(++x)))
+                    return false;
+                if(x > 14)
+                    return true;
+            }
+        }
+        return false;
+    }
 }
