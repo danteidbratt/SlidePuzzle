@@ -109,7 +109,7 @@ public class Spelplan extends JPanel {
         repaint();
     }
 
-    public void shuffle(int a) throws InterruptedException {
+    public void shuffle(int a){
         for (int i = 0; i <= a; i++) {
             while (!isMovable()) {
                 this.clickedY = (int) (Math.random() * yLength + 1);
