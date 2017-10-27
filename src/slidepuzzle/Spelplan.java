@@ -33,10 +33,16 @@ public class Spelplan extends JPanel {
         setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
         
-        for (Bricka[] brickor1 : brickor) {
-            for (int j = 0; j < brickor.length; j++) {
-                brickor1[j] = new Bricka(0);
+        for (int i = 0 ; i < brickor.length ; i++) {
+            for (int j = 0; j < brickor[i].length ; j++) {
+                brickor[i][j] = new Bricka(0);
             }
+        }
+        for (Bricka[] brickas : brickor) {
+            for (Bricka bricka : brickas) {
+                System.out.print(bricka.getText());
+            }
+            System.out.println();
         }
         placeTiles();
     }
@@ -45,8 +51,10 @@ public class Spelplan extends JPanel {
         int a = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
+                System.out.println(i + "\t" + j);
+                System.out.println(a + "\n");
                 brickor[i][j].setText(String.valueOf(++a));
-                if ((j == brickor[j].length-2) && (i == brickor.length-2)) {
+                if ((j == brickor[i].length-2) && (i == brickor.length-2)) {
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
                     emptyY = i;
