@@ -3,10 +3,10 @@ package slidepuzzle;
 import java.awt.BorderLayout;
 import javax.swing.*;
 
-    public class Program extends JFrame{
+public class Program extends JFrame{
 
-        public static Spelplan spelplan = new Spelplan(3,3);
-        public static Meny meny = new Meny();
+    public static Spelplan spelplan = new Spelplan(5,5);
+    public static Meny meny = new Meny();
         
     public void Komponenter(){
         setLayout(new BorderLayout());

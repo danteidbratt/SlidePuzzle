@@ -32,17 +32,11 @@ public class Spelplan extends JPanel {
         setSize(400, 400);
         setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
-        
-        for (int i = 0 ; i < brickor.length ; i++) {
-            for (int j = 0; j < brickor[i].length ; j++) {
+
+        for (int i = 0; i < brickor.length; i++) {
+            for (int j = 0; j < brickor[i].length; j++) {
                 brickor[i][j] = new Bricka(0);
             }
-        }
-        for (Bricka[] brickas : brickor) {
-            for (Bricka bricka : brickas) {
-                System.out.print(bricka.getText());
-            }
-            System.out.println();
         }
         placeTiles();
     }
@@ -51,10 +45,8 @@ public class Spelplan extends JPanel {
         int a = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
-                System.out.println(i + "\t" + j);
-                System.out.println(a + "\n");
                 brickor[i][j].setText(String.valueOf(++a));
-                if ((j == brickor[i].length-2) && (i == brickor.length-2)) {
+                if ((j == brickor[i].length - 2) && (i == brickor.length - 2)) {
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
                     emptyY = i;
@@ -66,13 +58,12 @@ public class Spelplan extends JPanel {
             }
         }
     }
-    
-    
+
     MouseAdapter ma = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
-        
+
         @Override
         public void mousePressed(MouseEvent e) {
             for (int i = 1; i < brickor.length - 1; i++) {
@@ -96,7 +87,7 @@ public class Spelplan extends JPanel {
                         if (isMovable()) {
                             slide();
                             move();
-                            if(isSolved()){
+                            if (isSolved()) {
                                 JOptionPane.showMessageDialog(null, "Du vann!");
                             }
                             return;
@@ -114,6 +105,8 @@ public class Spelplan extends JPanel {
                 add(brickor[i][j]);
             }
         }
+        revalidate();
+        repaint();
     }
 
     public void shuffle(int a) {
@@ -122,8 +115,8 @@ public class Spelplan extends JPanel {
                 this.clickedY = (int) (Math.random() * yLength + 1);
                 this.clickedX = (int) (Math.random() * xLength + 1);
             }
-                slide();
-                move();
+            slide();
+            move();
         }
     }
 
@@ -139,18 +132,18 @@ public class Spelplan extends JPanel {
         brickor[emptyY][emptyX] = tempBricka;
         emptyX = clickedX;
         emptyY = clickedY;
-        revalidate();
-        repaint();
     }
-    
-    public boolean isSolved(){
+
+    public boolean isSolved() {
         int x = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
-                if(!brickor[i][j].getText().equals(String.valueOf(++x)))
+                if (!brickor[i][j].getText().equals(String.valueOf(++x))) {
                     return false;
-                if(x > xLength*yLength-2)
+                }
+                if (x > xLength * yLength - 2) {
                     return true;
+                }
             }
         }
         return false;
