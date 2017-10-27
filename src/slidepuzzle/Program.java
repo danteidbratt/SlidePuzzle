@@ -5,7 +5,7 @@ import javax.swing.*;
 
     public class Program extends JFrame{
 
-        public static Spelplan spelplan = new Spelplan(10,10);
+        public static Spelplan spelplan = new Spelplan(5,5);
         public static Meny meny = new Meny();
         
     public void Komponenter(){
