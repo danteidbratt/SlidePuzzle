@@ -21,7 +21,6 @@ public class Spelplan extends JPanel {
     int ytom;
 
     public Spelplan(int rows, int cols) {
-        brickor = new Bricka[rows][cols];
         xLength = cols;
         yLength = rows;
         setBasics();
@@ -47,7 +46,7 @@ public class Spelplan extends JPanel {
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
                 brickor[i][j].setText(String.valueOf(++a));
-                if (a == 16) {
+                if ((j == brickor[j].length-2) && (i == brickor.length-2)) {
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
                     emptyY = i;
@@ -85,7 +84,7 @@ public class Spelplan extends JPanel {
             for (Bricka[] brickas : brickor) {
                 for (Bricka bricka : brickas) {
                     if (e.getSource() == bricka) {
-                        bricka.setBackground(Color.RED);
+                        bricka.setBackground(Color.PINK);
                         if (isMovable()) {
                             slide();
                             move();
@@ -142,7 +141,7 @@ public class Spelplan extends JPanel {
             for (int j = 1; j < brickor[i].length - 1; j++) {
                 if(!brickor[i][j].getText().equals(String.valueOf(++x)))
                     return false;
-                if(x > 14)
+                if(x > xLength*yLength-2)
                     return true;
             }
         }

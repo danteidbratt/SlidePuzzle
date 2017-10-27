@@ -1,8 +1,7 @@
 package slidepuzzle;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Font;
 import javax.swing.*;
 
 public class Bricka extends JLabel {
@@ -16,8 +15,10 @@ public class Bricka extends JLabel {
 
     private void setBasics() {
         this.setText(String.valueOf(this.siffra));
+        setFont(new Font("SansSerif" , Font.BOLD , 30));
+        setForeground(Color.BLACK);
         this.setHorizontalAlignment(SwingConstants.CENTER);
-        setBackground(Color.RED);
+        setBackground(Color.PINK);
         setOpaque(true);
     }
     
