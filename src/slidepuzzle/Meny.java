@@ -6,11 +6,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
-public class Meny extends JPanel{
+public class Meny extends JPanel {
+
     int rader;
     int kollumner;
-    String[] radArray = {"3","4","5","6","7","8","9"};
-    String[] kolArray = {"3","4","5","6","7","8","9"};
+    String[] radArray = {"3", "4", "5", "6", "7", "8", "9"};
+    String[] kolArray = {"3", "4", "5", "6", "7", "8", "9"};
     JPanel topPanel = new JPanel();
     JPanel midPanel = new JPanel();
     JPanel botPanel = new JPanel();
@@ -44,7 +45,7 @@ public class Meny extends JPanel{
         bg.add(radio2);
         bg.add(radio3);
         bg.add(radio4);
-        
+
         radio1.addActionListener((e) -> {
             midPanel.setVisible(false);
             rader = 3;
@@ -65,36 +66,44 @@ public class Meny extends JPanel{
             combo1.setSelectedIndex(0);
             combo2.setSelectedIndex(0);
         });
-        
+
         radioPanel.setLayout(new GridLayout(4, 1));
         radioPanel.add(radio1);
         radioPanel.add(radio2);
         radioPanel.add(radio3);
         radioPanel.add(radio4);
         topPanel.add(radioPanel, BorderLayout.WEST);
-        
+
         textPanel.setLayout(new GridLayout(4, 1));
         textPanel.add(text1);
         textPanel.add(text2);
         textPanel.add(text3);
         textPanel.add(text4);
         topPanel.add(textPanel, BorderLayout.CENTER);
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> master
         combo1.addActionListener((e) -> {
-            rader = Integer.parseInt((String)combo1.getSelectedItem());
+            rader = Integer.parseInt((String) combo1.getSelectedItem());
         });
         combo2.addActionListener((e) -> {
-            kollumner = Integer.parseInt((String)combo2.getSelectedItem());
+            kollumner = Integer.parseInt((String) combo2.getSelectedItem());
         });
+<<<<<<< HEAD
         
         
+=======
+
+>>>>>>> master
         midPanel.setLayout(new GridLayout(4, 2));
         boxText1.setHorizontalAlignment(SwingConstants.CENTER);
         boxText1.setVerticalAlignment(SwingConstants.BOTTOM);
         boxText2.setHorizontalAlignment(SwingConstants.CENTER);
         boxText2.setVerticalAlignment(SwingConstants.BOTTOM);
         midPanel.setVisible(false);
-        
+
         midPanel.add(boxText1);
         midPanel.add(boxText2);
         midPanel.add(combo1);
@@ -103,30 +112,26 @@ public class Meny extends JPanel{
         midPanel.add(empty2);
         midPanel.add(empty3);
         midPanel.add(empty4);
-        
+
         botPanel.setLayout(new GridLayout(2, 1));
         botPanel.add(shuffle);
         botPanel.add(cancel);
-        
+
         add(topPanel);
         add(midPanel);
         add(botPanel);
         setPreferredSize(new Dimension(200, 0));
-        
+
         cancel.addActionListener((ActionEvent ae) -> {
             System.exit(0);
         });
-        
-//        shuffle.addActionListener((ActionEvent ae) -> {
-//            Program.spelplan.shuffle();
-//        });
     }
-    
-    public int getRader(){
+
+    public int getRader() {
         return rader;
     }
-    
-    public int getKollumner(){
+
+    public int getKollumner() {
         return kollumner;
     }
 }
