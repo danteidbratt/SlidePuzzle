@@ -62,6 +62,8 @@ public class Meny extends JPanel{
         });
         radio4.addActionListener((e) -> {
             midPanel.setVisible(true);
+            combo1.setSelectedIndex(0);
+            combo2.setSelectedIndex(0);
         });
         
         radioPanel.setLayout(new GridLayout(4, 1));
@@ -78,15 +80,13 @@ public class Meny extends JPanel{
         textPanel.add(text4);
         topPanel.add(textPanel, BorderLayout.CENTER);
         
-        combo1.setSelectedIndex(-1);
-        combo2.setSelectedIndex(-1);
-        
         combo1.addActionListener((e) -> {
             rader = Integer.parseInt((String)combo1.getSelectedItem());
         });
         combo2.addActionListener((e) -> {
             kollumner = Integer.parseInt((String)combo2.getSelectedItem());
         });
+        
         
         midPanel.setLayout(new GridLayout(4, 2));
         boxText1.setHorizontalAlignment(SwingConstants.CENTER);
