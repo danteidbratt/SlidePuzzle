@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Spelplan extends JPanel {
-    
+
     int clickedX;
     int clickedY;
     int emptyX;
@@ -16,7 +16,7 @@ public class Spelplan extends JPanel {
     Bricka[][] brickor;
     int xLength;
     int yLength;
-    
+
     int xtom;
     int ytom;
 
@@ -26,52 +26,50 @@ public class Spelplan extends JPanel {
         yLength = rows;
         setBasics();
     }
-    
-    private void setBasics(){
+
+    private void setBasics() {
         brickor = new Bricka[yLength + 2][xLength + 2];
 
         setSize(400, 400);
         setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
-        
-        for (int i = 0; i < brickor.length; i++) {
+
+        for (Bricka[] brickor1 : brickor) {
             for (int j = 0; j < brickor.length; j++) {
-                brickor[i][j] = new Bricka(0);
+                brickor1[j] = new Bricka(0);
             }
         }
         placeTiles();
     }
-    
-    public void placeTiles(){
+
+    public void placeTiles() {
         int a = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
                 brickor[i][j].setText(String.valueOf(++a));
-                if(a == 16){
+                if (a == 16) {
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
                     emptyY = i;
                     emptyX = j;
-                } else 
+                } else {
                     brickor[i][j].addMouseListener(ma);
+                }
                 add(brickor[i][j]);
             }
         }
     }
-        
-        
-    
+
     MouseAdapter ma = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
-        
-        
+
         @Override
         public void mousePressed(MouseEvent e) {
             for (int i = 1; i < brickor.length - 1; i++) {
                 for (int j = 1; j < brickor[i].length - 1; j++) {
-                    if(e.getSource() == brickor[i][j]){
+                    if (e.getSource() == brickor[i][j]) {
                         brickor[i][j].setBackground(Color.YELLOW);
                         clickedY = i;
                         clickedX = j;
@@ -81,15 +79,15 @@ public class Spelplan extends JPanel {
             System.out.println("\n" + clickedY + "\t" + clickedX);
             System.out.println(emptyY + "\t" + emptyX);
         }
-        
+
         @Override
         public void mouseReleased(MouseEvent e) {
-            
+
             for (Bricka[] brickas : brickor) {
                 for (Bricka bricka : brickas) {
-                    if(e.getSource() == bricka){
+                    if (e.getSource() == bricka) {
                         bricka.setBackground(Color.RED);
-                        if(isMovable()){
+                        if (isMovable()) {
                             slide();
                             move();
                             revalidate();
@@ -101,8 +99,8 @@ public class Spelplan extends JPanel {
             }
         }
     };
-    
-    public void move(){
+
+    public void move() {
         removeAll();
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
@@ -110,17 +108,24 @@ public class Spelplan extends JPanel {
             }
         }
     }
-    
-    static void shuffle() {
-        
+
+    public void shuffle(int a) {
+        for (int i = 0; i <= a; i++) {
+            while (!isMovable()) {
+                this.clickedY = (int) (Math.random() * 4 + 1);
+                this.clickedX = (int) (Math.random() * 4 + 1);
+            }
+                slide();
+                move();
+        }
     }
-    
-    public boolean isMovable(){
-        return ((clickedX == emptyX + 1 || clickedX == emptyX -1) && (clickedY == emptyY)) ||
-               ((clickedY == emptyY + 1 || clickedY == emptyY -1) && (clickedX == emptyX));
+
+    public boolean isMovable() {
+        return ((clickedX == emptyX + 1 || clickedX == emptyX - 1) && (clickedY == emptyY))
+                || ((clickedY == emptyY + 1 || clickedY == emptyY - 1) && (clickedX == emptyX));
     }
-    
-    public void slide(){
+
+    public void slide() {
         Bricka tempBricka;
         tempBricka = brickor[clickedY][clickedX];
         brickor[clickedY][clickedX] = brickor[emptyY][emptyX];
@@ -130,7 +135,7 @@ public class Spelplan extends JPanel {
         revalidate();
         repaint();
     }
-    MouseAdapter Neigbhourlyss = new MouseAdapter(){
-            
+    MouseAdapter Neigbhourlyss = new MouseAdapter() {
+
     };
 }

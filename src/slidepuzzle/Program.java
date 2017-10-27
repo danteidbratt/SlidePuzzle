@@ -4,8 +4,9 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
     public class Program extends JFrame{
-        Spelplan spelplan = new Spelplan(4,4);
-        Meny meny = new Meny();
+
+        public static Spelplan spelplan = new Spelplan(4,4);
+        public static Meny meny = new Meny();
         
     public void Komponenter(){
         setLayout(new BorderLayout());

@@ -20,7 +20,7 @@ public class Meny extends JPanel{
         });
         
         shuffle.addActionListener((ActionEvent ae) -> {
-            Spelplan.shuffle();
+            Program.spelplan.shuffle(5000);
         });
     }
 }
