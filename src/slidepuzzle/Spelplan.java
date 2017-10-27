@@ -2,9 +2,16 @@ package slidepuzzle;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Spelplan extends JPanel {
+    
+    int clickedX;
+    int clickedY;
+    int emptyX;
+    int emptyY;
 
     Bricka[][] brickor;
     int xLength;
@@ -29,23 +36,97 @@ public class Spelplan extends JPanel {
                 brickor[i][j] = new Bricka(0);
             }
         }
-        
-        int a = 1;
+        placeTiles();
+    }
+    
+    public void placeTiles(){
+        int a = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
-                brickor[i][j].setText(String.valueOf(a++));
-                if(a-1== 16){
+                brickor[i][j].setText(String.valueOf(++a));
+                if(a == 16){
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
-                }
+                    emptyY = i;
+                    emptyX = j;
+                } else 
+                    brickor[i][j].addMouseListener(ma);
                 add(brickor[i][j]);
             }
-
         }
-        System.out.println(brickor[0][0].getText());
     }
-
+        
+        
+    
+    MouseAdapter ma = new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+        
+        
+        @Override
+        public void mousePressed(MouseEvent e) {
+            for (int i = 1; i < brickor.length - 1; i++) {
+                for (int j = 1; j < brickor[i].length - 1; j++) {
+                    if(e.getSource() == brickor[i][j]){
+                        brickor[i][j].setBackground(Color.YELLOW);
+                        clickedY = i;
+                        clickedX = j;
+                    }
+                }
+            }
+            System.out.println("\n" + clickedY + "\t" + clickedX);
+            System.out.println(emptyY + "\t" + emptyX);
+        }
+        
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+            for (Bricka[] brickas : brickor) {
+                for (Bricka bricka : brickas) {
+                    if(e.getSource() == bricka){
+                        bricka.setBackground(Color.RED);
+                        if(isMovable()){
+                            slide();
+                            move();
+                            revalidate();
+                            repaint();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    };
+    
+    public void move(){
+        removeAll();
+        for (int i = 1; i < brickor.length - 1; i++) {
+            for (int j = 1; j < brickor[i].length - 1; j++) {
+                add(brickor[i][j]);
+            }
+        }
+        revalidate();
+        repaint();
+    }
+    
     static void shuffle() {
 
+    }
+    
+    public boolean isMovable(){
+        return ((clickedX == emptyX + 1 || clickedX == emptyX -1) && (clickedY == emptyY)) ||
+               ((clickedY == emptyY + 1 || clickedY == emptyY -1) && (clickedX == emptyX));
+    }
+    
+    public void slide(){
+        Bricka tempBricka;
+        tempBricka = brickor[clickedY][clickedX];
+        brickor[clickedY][clickedX] = brickor[emptyY][emptyX];
+        brickor[emptyY][emptyX] = tempBricka;
+        emptyX = clickedX;
+        emptyY = clickedY;
+        revalidate();
+        repaint();
     }
 }

@@ -15,9 +15,8 @@ public class Bricka extends JLabel {
     private void setBasics(){
         this.setText(String.valueOf(this.siffra));
         this.setHorizontalAlignment(SwingConstants.CENTER);
-        if(siffra < 16){
-            setBackground(Color.red);
-            setOpaque(true);
-        }
+        setBackground(Color.RED);
+        setOpaque(true);
     }
+    
 }
