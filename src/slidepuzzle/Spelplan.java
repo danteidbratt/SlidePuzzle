@@ -111,7 +111,7 @@ public class Spelplan extends JPanel {
     }
     
     static void shuffle() {
-
+        
     }
     
     public boolean isMovable(){
