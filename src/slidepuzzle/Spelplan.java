@@ -111,8 +111,8 @@ public class Spelplan extends JPanel {
     public void shuffle(int a) {
         for (int i = 0; i <= a; i++) {
             while (!isMovable()) {
-                this.clickedY = (int) (Math.random() * 4 + 1);
-                this.clickedX = (int) (Math.random() * 4 + 1);
+                this.clickedY = (int) (Math.random() * yLength + 1);
+                this.clickedX = (int) (Math.random() * xLength + 1);
             }
                 slide();
                 move();
