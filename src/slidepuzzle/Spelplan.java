@@ -31,9 +31,9 @@ public class Spelplan extends JPanel {
         setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
         
-        for (int i = 0; i < brickor.length; i++) {
+        for (Bricka[] brickor1 : brickor) {
             for (int j = 0; j < brickor.length; j++) {
-                brickor[i][j] = new Bricka(0);
+                brickor1[j] = new Bricka(0);
             }
         }
         placeTiles();
@@ -55,14 +55,12 @@ public class Spelplan extends JPanel {
             }
         }
     }
-        
-        
+    
     
     MouseAdapter ma = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
-        
         
         @Override
         public void mousePressed(MouseEvent e) {
@@ -75,8 +73,6 @@ public class Spelplan extends JPanel {
                     }
                 }
             }
-            System.out.println("\n" + clickedY + "\t" + clickedX);
-            System.out.println(emptyY + "\t" + emptyX);
         }
         
         @Override
@@ -89,8 +85,9 @@ public class Spelplan extends JPanel {
                         if(isMovable()){
                             slide();
                             move();
-                            revalidate();
-                            repaint();
+                            if(isSolved()){
+                                JOptionPane.showMessageDialog(null, "Du vann!");
+                            }
                             return;
                         }
                     }
@@ -106,8 +103,6 @@ public class Spelplan extends JPanel {
                 add(brickor[i][j]);
             }
         }
-        revalidate();
-        repaint();
     }
     
     static void shuffle() {
@@ -128,5 +123,18 @@ public class Spelplan extends JPanel {
         emptyY = clickedY;
         revalidate();
         repaint();
+    }
+    
+    public boolean isSolved(){
+        int x = 0;
+        for (int i = 1; i < brickor.length - 1; i++) {
+            for (int j = 1; j < brickor[i].length - 1; j++) {
+                if(!brickor[i][j].getText().equals(String.valueOf(++x)))
+                    return false;
+                if(x > 14)
+                    return true;
+            }
+        }
+        return false;
     }
 }
