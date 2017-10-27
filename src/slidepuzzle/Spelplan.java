@@ -2,6 +2,8 @@ package slidepuzzle;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Spelplan extends JPanel {
@@ -9,6 +11,9 @@ public class Spelplan extends JPanel {
     Bricka[][] brickor;
     int xLength;
     int yLength;
+    
+    int xtom;
+    int ytom;
 
     public Spelplan(int rows, int cols) {
         brickor = new Bricka[rows][cols];
@@ -29,7 +34,7 @@ public class Spelplan extends JPanel {
                 brickor[i][j] = new Bricka(0);
             }
         }
-        
+
         int a = 1;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
@@ -37,15 +42,21 @@ public class Spelplan extends JPanel {
                 if(a-1== 16){
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
+                    xtom = j;
+                    ytom = i;
                 }
+                brickor[i][j].addMouseListener(brickor[i][j].muslyss);
+                
                 add(brickor[i][j]);
             }
 
         }
-        System.out.println(brickor[0][0].getText());
     }
 
     static void shuffle() {
 
     }
+    MouseAdapter Neigbhourlyss = new MouseAdapter(){
+            
+    };
 }
