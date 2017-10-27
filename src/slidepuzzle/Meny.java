@@ -20,8 +20,14 @@ public class Meny extends JPanel{
     JLabel boxText2 = new JLabel("Kollumner");
     JComboBox combo1 = new JComboBox();
     JComboBox combo2 = new JComboBox();
+    JLabel empty1 = new JLabel("");
+    JLabel empty2 = new JLabel("");
+    JLabel empty3 = new JLabel("");
+    JLabel empty4 = new JLabel("");
+    JLabel empty5 = new JLabel("");
+    JLabel empty6 = new JLabel("");
     JPanel textPanel = new JPanel();
-    JLabel text1 = new JLabel("Nybörjare         ");
+    JLabel text1 = new JLabel("Nybörjare");
     JLabel text2 = new JLabel("Erfaren");
     JLabel text3 = new JLabel("Expert");
     JLabel text4 = new JLabel("Custom");
@@ -50,17 +56,21 @@ public class Meny extends JPanel{
         topPanel.add(textPanel, BorderLayout.CENTER);
         
         
-        midPanel.setLayout(new GridLayout(3, 2));
+        midPanel.setLayout(new GridLayout(4, 2));
         boxText1.setHorizontalAlignment(SwingConstants.CENTER);
         boxText1.setVerticalAlignment(SwingConstants.BOTTOM);
         boxText2.setHorizontalAlignment(SwingConstants.CENTER);
         boxText2.setVerticalAlignment(SwingConstants.BOTTOM);
-        midPanel.setVisible(false);
+//        midPanel.setVisible(false);
         
         midPanel.add(boxText1);
         midPanel.add(boxText2);
         midPanel.add(combo1);
         midPanel.add(combo2);
+        midPanel.add(empty1);
+        midPanel.add(empty2);
+        midPanel.add(empty3);
+        midPanel.add(empty4);
         
         botPanel.setLayout(new GridLayout(2, 1));
         botPanel.add(shuffle);
