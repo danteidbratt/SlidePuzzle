@@ -110,7 +110,7 @@ public class Spelplan extends JPanel {
     }
 
     public void shuffle() {
-        int a = (int)Math.pow(yLength*xLength*1.3, 2);
+        int a = (int) Math.pow(yLength * xLength * 1.3, 2);
         for (int i = 0; i <= a; i++) {
             while (!isMovable()) {
                 this.clickedY = (int) (Math.random() * yLength + 1);
