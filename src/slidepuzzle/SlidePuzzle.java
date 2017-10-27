@@ -1,4 +1,3 @@
-
 package slidepuzzle;
 
 public class SlidePuzzle {

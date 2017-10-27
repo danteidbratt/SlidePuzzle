@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Spelplan extends JPanel {
-
+    
     int clickedX;
     int clickedY;
     int emptyX;
@@ -35,7 +35,7 @@ public class Spelplan extends JPanel {
 
         for (int i = 0; i < brickor.length; i++) {
             for (int j = 0; j < brickor[i].length; j++) {
-                brickor[i][j] = new Bricka(0);
+                brickor[i][j] = new Bricka();
             }
         }
         placeTiles();
@@ -46,6 +46,17 @@ public class Spelplan extends JPanel {
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
                 brickor[i][j].setText(String.valueOf(++a));
+                if(i % 2 == 0){
+                    if(j % 2 == 0)
+                        brickor[i][j].setPermanentColor(Color.MAGENTA);
+                    else
+                        brickor[i][j].setPermanentColor(Color.GREEN);
+                } else {
+                    if(j % 2 == 1)
+                        brickor[i][j].setPermanentColor(Color.MAGENTA);
+                    else
+                        brickor[i][j].setPermanentColor(Color.GREEN);
+                }
                 if ((j == brickor[i].length - 2) && (i == brickor.length - 2)) {
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
@@ -79,11 +90,10 @@ public class Spelplan extends JPanel {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-
             for (Bricka[] brickas : brickor) {
                 for (Bricka bricka : brickas) {
                     if (e.getSource() == bricka) {
-                        bricka.setBackground(Color.PINK);
+                            bricka.setBackground(bricka.getPermanentColor());
                         if (isMovable()) {
                             slide();
                             move();
@@ -110,7 +120,7 @@ public class Spelplan extends JPanel {
     }
 
     public void shuffle() {
-        int a = (int) Math.pow(yLength * xLength * 1.3, 2);
+        int a = (int) Math.pow(yLength * xLength * 1.5, 2);
         for (int i = 0; i <= a; i++) {
             while (!isMovable()) {
                 this.clickedY = (int) (Math.random() * yLength + 1);

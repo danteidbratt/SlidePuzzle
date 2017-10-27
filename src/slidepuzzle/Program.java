@@ -14,7 +14,7 @@ public class Program extends JFrame {
     public void Komponenter() {
         setLayout(new BorderLayout());
         setVisible(true);
-
+        setTitle("SlidePuzzle");
         setSize(600, 400);
         setLocationRelativeTo(null);
 

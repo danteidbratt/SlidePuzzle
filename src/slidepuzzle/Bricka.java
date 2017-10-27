@@ -5,22 +5,26 @@ import java.awt.Font;
 import javax.swing.*;
 
 public class Bricka extends JLabel {
+    
+    private Color permanentColor;
 
-    Bricka[][] brickor;
-    private int siffra = 0;
-
-    public Bricka(int siffra) {
-        this.siffra = siffra;
+    public Bricka() {
         setBasics();
     }
 
     private void setBasics() {
-        this.setText(String.valueOf(this.siffra));
         setFont(new Font("SansSerif", Font.BOLD, 30));
         setForeground(Color.BLACK);
         this.setHorizontalAlignment(SwingConstants.CENTER);
-        setBackground(Color.PINK);
         setOpaque(true);
     }
-
+    
+    public void setPermanentColor(Color permanentColor){
+        this.setBackground(permanentColor);
+        this.permanentColor = permanentColor;
+    }
+    
+    public Color getPermanentColor(){
+        return permanentColor;
+    }
 }

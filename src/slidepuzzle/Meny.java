@@ -8,8 +8,8 @@ import javax.swing.*;
 
 public class Meny extends JPanel {
 
-    int rader;
-    int kollumner;
+    int rader = 4;
+    int kollumner = 4;
     String[] radArray = {"3", "4", "5", "6", "7", "8", "9"};
     String[] kolArray = {"3", "4", "5", "6", "7", "8", "9"};
     JPanel topPanel = new JPanel();
@@ -80,23 +80,14 @@ public class Meny extends JPanel {
         textPanel.add(text3);
         textPanel.add(text4);
         topPanel.add(textPanel, BorderLayout.CENTER);
-<<<<<<< HEAD
         
-=======
-
->>>>>>> master
         combo1.addActionListener((e) -> {
             rader = Integer.parseInt((String) combo1.getSelectedItem());
         });
         combo2.addActionListener((e) -> {
             kollumner = Integer.parseInt((String) combo2.getSelectedItem());
         });
-<<<<<<< HEAD
         
-        
-=======
-
->>>>>>> master
         midPanel.setLayout(new GridLayout(4, 2));
         boxText1.setHorizontalAlignment(SwingConstants.CENTER);
         boxText1.setVerticalAlignment(SwingConstants.BOTTOM);
