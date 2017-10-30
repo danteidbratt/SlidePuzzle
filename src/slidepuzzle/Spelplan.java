@@ -28,14 +28,14 @@ public class Spelplan extends JPanel {
 
     private void setBasics() {
         brickor = new Bricka[yLength + 2][xLength + 2];
-
-        setSize(400, 400);
+        setSize(340, 340);
         setLayout(new GridLayout(yLength, xLength, 5, 5));
         setBackground(Color.BLACK);
+        setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 
-        for (int i = 0; i < brickor.length; i++) {
-            for (int j = 0; j < brickor[i].length; j++) {
-                brickor[i][j] = new Bricka();
+        for (Bricka[] rad : brickor) {
+            for (int j = 0; j < rad.length; j++) {
+                rad[j] = new Bricka();
             }
         }
         placeTiles();
@@ -47,15 +47,21 @@ public class Spelplan extends JPanel {
             for (int j = 1; j < brickor[i].length - 1; j++) {
                 brickor[i][j].setText(String.valueOf(++a));
                 if(i % 2 == 0){
-                    if(j % 2 == 0)
-                        brickor[i][j].setPermanentColor(Color.MAGENTA);
-                    else
-                        brickor[i][j].setPermanentColor(Color.GREEN);
+                    if (j % 2 == 0) {
+                        brickor[i][j].setPermanentColor(Color.WHITE);
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+                    } else {
+                        brickor[i][j].setPermanentColor(Color.GRAY);
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+                    }
                 } else {
-                    if(j % 2 == 1)
-                        brickor[i][j].setPermanentColor(Color.MAGENTA);
-                    else
-                        brickor[i][j].setPermanentColor(Color.GREEN);
+                    if (j % 2 == 1) {
+                        brickor[i][j].setPermanentColor(Color.WHITE);
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+                    } else {
+                        brickor[i][j].setPermanentColor(Color.GRAY);
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+                    }
                 }
                 if ((j == brickor[i].length - 2) && (i == brickor.length - 2)) {
                     brickor[i][j].setBackground(Color.BLACK);
@@ -117,7 +123,7 @@ public class Spelplan extends JPanel {
     }
 
     public void shuffle() {
-        int a = (int) Math.pow(yLength * xLength * 1.5, 2);
+        int a = (int) Math.pow(yLength * xLength, 2);
         for (int i = 0; i <= a; i++) {
             while (!isMovable()) {
                 this.clickedY = (int) (Math.random() * yLength + 1);
@@ -129,15 +135,53 @@ public class Spelplan extends JPanel {
     }
 
     public boolean isMovable() {
-        return ((clickedX == emptyX + 1 || clickedX == emptyX - 1) && (clickedY == emptyY))
-                || ((clickedY == emptyY + 1 || clickedY == emptyY - 1) && (clickedX == emptyX));
+        return ((clickedX < emptyX || clickedX > emptyX) && (clickedY == emptyY))
+                || ((clickedY < emptyY || clickedY > emptyY) && (clickedX == emptyX));
     }
 
     public void slide() {
-        Bricka tempBricka;
-        tempBricka = brickor[clickedY][clickedX];
+        Bricka[] tempBrickor = new Bricka[Math.abs(clickedY-emptyY) + Math.abs(clickedX-emptyX)];
+        int direction = 1;
+        int step = 1;
+        
+        if ((clickedY-emptyY + clickedX-emptyX) > 0) {
+            direction = -1;
+            step = -1;
+        }
+        
+        int counter = 0;
+        if (clickedX == emptyX) {
+            for (int i = clickedY; i != emptyY;) {
+                tempBrickor[counter] = brickor[i][emptyX];
+                if (clickedY > emptyY)
+                    i--;
+                else
+                    i++;
+                counter++;
+            }
+        } else {
+            for (int i = clickedX; i != emptyX;) {
+                tempBrickor[counter] = brickor[emptyY][i];
+                if (clickedX > emptyX)
+                    i--;
+                else
+                    i++;
+                counter++;
+            }
+        }
+        
         brickor[clickedY][clickedX] = brickor[emptyY][emptyX];
-        brickor[emptyY][emptyX] = tempBricka;
+        if (clickedX == emptyX) {
+            for (Bricka b : tempBrickor) {
+                brickor[clickedY+direction][emptyX] = b;
+                direction += step;
+            }
+        } else {
+            for (Bricka b : tempBrickor) {
+                brickor[emptyY][clickedX+direction] = b;
+                direction += step;
+            }
+        }
         emptyX = clickedX;
         emptyY = clickedY;
     }

@@ -1,6 +1,7 @@
 package slidepuzzle;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -36,9 +37,10 @@ public class Meny extends JPanel {
     JLabel text2 = new JLabel("Erfaren");
     JLabel text3 = new JLabel("Expert");
     JLabel text4 = new JLabel("Custom");
+    JButton shuffle = new JButton("Blanda");
     JButton cancel = new JButton("Avsluta");
 
-    public Meny(JButton shuffle) {
+    public Meny(JButton newGame, JButton shuffle) {
         setLayout(new GridLayout(3, 1));
         topPanel.setLayout(new BorderLayout());
         bg.add(radio1);
@@ -103,19 +105,20 @@ public class Meny extends JPanel {
         midPanel.add(empty2);
         midPanel.add(empty3);
         midPanel.add(empty4);
-
-        botPanel.setLayout(new GridLayout(2, 1));
+        
+        cancel.addActionListener((ActionEvent ae) -> {
+            System.exit(0);
+        });
+        
+        botPanel.setLayout(new GridLayout(3, 1));
         botPanel.add(shuffle);
+        botPanel.add(newGame);
         botPanel.add(cancel);
 
         add(topPanel);
         add(midPanel);
         add(botPanel);
-        setPreferredSize(new Dimension(200, 0));
-
-        cancel.addActionListener((ActionEvent ae) -> {
-            System.exit(0);
-        });
+        setPreferredSize(new Dimension(150, 0));
     }
 
     public int getRader() {

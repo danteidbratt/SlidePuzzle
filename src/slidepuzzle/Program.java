@@ -6,16 +6,17 @@ import javax.swing.*;
 
 public class Program extends JFrame {
 
-    JButton shuffle = new JButton("Nytt Spel");
+    JButton newGame = new JButton("Nytt Spel");
+    JButton shuffle = new JButton("Blanda");
 
     public Spelplan spelplan = new Spelplan(4, 4);
-    public Meny meny = new Meny(shuffle);
+    public Meny meny = new Meny(newGame, shuffle);
 
     public void Komponenter() {
         setLayout(new BorderLayout());
         setTitle("SlidePuzzle");
         setVisible(true);
-        setSize(600, 400);
+        setSize(490, 340);
         setLocationRelativeTo(null);
 
         add(spelplan, BorderLayout.CENTER);
@@ -23,14 +24,16 @@ public class Program extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        shuffle.addActionListener((ActionEvent ae) -> {
+        newGame.addActionListener((ActionEvent ae) -> {
             remove(spelplan);
             spelplan = new Spelplan(meny.getRader(), meny.getKollumner());
-            setSize(meny.getKollumner() * 100 + 200, meny.getRader() * 100);
+            setSize(meny.getKollumner() * 85 + 150, meny.getRader() * 85);
             setLocationRelativeTo(null);
             add(spelplan);
             revalidate();
             repaint();
+        });
+        shuffle.addActionListener((e) -> {
             spelplan.shuffle();
         });
     }
