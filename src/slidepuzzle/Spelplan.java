@@ -60,6 +60,7 @@ public class Spelplan extends JPanel {
                 if ((j == brickor[i].length - 2) && (i == brickor.length - 2)) {
                     brickor[i][j].setBackground(Color.BLACK);
                     brickor[i][j].setText("");
+                    brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     emptyY = i;
                     emptyX = j;
                 } else {
