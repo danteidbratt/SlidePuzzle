@@ -13,7 +13,7 @@ public class Bricka extends JLabel {
     }
 
     private void setBasics() {
-        this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+        this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
         setFont(new Font("SansSerif", Font.BOLD, 30));
         setForeground(Color.BLACK);
         this.setHorizontalAlignment(SwingConstants.CENTER);
