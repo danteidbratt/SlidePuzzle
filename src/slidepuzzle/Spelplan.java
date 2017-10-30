@@ -72,10 +72,6 @@ public class Spelplan extends JPanel {
 
     MouseAdapter ma = new MouseAdapter() {
         @Override
-        public void mouseClicked(MouseEvent e) {
-        }
-
-        @Override
         public void mousePressed(MouseEvent e) {
             for (int i = 1; i < brickor.length - 1; i++) {
                 for (int j = 1; j < brickor[i].length - 1; j++) {
