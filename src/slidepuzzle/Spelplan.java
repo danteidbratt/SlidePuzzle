@@ -140,7 +140,7 @@ public class Spelplan extends JPanel {
     }
 
     public void slide() {
-        Bricka[] tempBrickor = new Bricka[Math.abs(clickedY-emptyY) + Math.abs(clickedX-emptyX)];
+        Bricka[] tempBrickor = new Bricka[Math.abs(clickedY-emptyY + clickedX-emptyX)];
         int direction = 1;
         int step = 1;
         
