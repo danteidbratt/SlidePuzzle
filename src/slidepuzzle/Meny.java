@@ -36,10 +36,8 @@ public class Meny extends JPanel {
     JLabel text2 = new JLabel("Erfaren");
     JLabel text3 = new JLabel("Expert");
     JLabel text4 = new JLabel("Custom");
-    JButton shuffle = new JButton("Blanda");
-    JButton cancel = new JButton("Avsluta");
 
-    public Meny(JButton newGame, JButton shuffle) {
+    public Meny(JButton newGame, JButton shuffle, JButton cancel) {
         setLayout(new GridLayout(3, 1));
         topPanel.setLayout(new BorderLayout());
         bg.add(radio1);
@@ -104,10 +102,6 @@ public class Meny extends JPanel {
         midPanel.add(empty2);
         midPanel.add(empty3);
         midPanel.add(empty4);
-        
-        cancel.addActionListener((ActionEvent ae) -> {
-            System.exit(0);
-        });
         
         botPanel.setLayout(new GridLayout(3, 1));
         botPanel.add(shuffle);

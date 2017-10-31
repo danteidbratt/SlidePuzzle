@@ -8,9 +8,10 @@ public class Program extends JFrame {
 
     JButton newGame = new JButton("Nytt Spel");
     JButton shuffle = new JButton("Blanda");
+    JButton cancel = new JButton("Avsluta");
 
     public Spelplan spelplan = new Spelplan(4, 4);
-    public Meny meny = new Meny(newGame, shuffle);
+    public Meny meny = new Meny(newGame, shuffle, cancel);
 
     public void Komponenter() {
         setLayout(new BorderLayout());
@@ -33,8 +34,13 @@ public class Program extends JFrame {
             revalidate();
             repaint();
         });
+        
         shuffle.addActionListener((e) -> {
             spelplan.shuffle();
+        });
+        
+        cancel.addActionListener((ActionEvent ae) -> {
+            System.exit(0);
         });
     }
 }
