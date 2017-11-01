@@ -127,8 +127,8 @@ public class Spelplan extends JPanel {
                 this.clickedX = (int) (Math.random() * xLength + 1);
             }
             slide();
-            updatePuzzle();
         }
+        updatePuzzle();
     }
 
     private boolean isMovable() {
