@@ -24,11 +24,7 @@ public class Meny extends JPanel {
     JLabel boxText2 = new JLabel("Kollumner");
     JComboBox combo1 = new JComboBox(radArray);
     JComboBox combo2 = new JComboBox(kolArray);
-//    JPanel textPanel = new JPanel();
-//    JLabel text1 = new JLabel("Nybörjare");
-//    JLabel text2 = new JLabel("Erfaren");
-//    JLabel text3 = new JLabel("Expert");
-//    JLabel text4 = new JLabel("Custom");
+    // j
 
     public Meny(JButton newGame, JButton shuffle, JButton cancel) {
         topPanel.setLayout(new BorderLayout());
@@ -65,13 +61,6 @@ public class Meny extends JPanel {
         radioPanel.add(radio4);
         topPanel.add(radioPanel, BorderLayout.WEST);
 
-//        textPanel.setLayout(new GridLayout(4, 1));
-//        textPanel.add(text1);
-//        textPanel.add(text2);
-//        textPanel.add(text3);
-//        textPanel.add(text4);
-//        topPanel.add(textPanel, BorderLayout.CENTER);
-        
         combo1.addActionListener((e) -> {
             rader = Integer.parseInt((String) combo1.getSelectedItem());
         });
