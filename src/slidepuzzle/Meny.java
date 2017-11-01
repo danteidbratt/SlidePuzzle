@@ -24,7 +24,6 @@ public class Meny extends JPanel {
     JLabel boxText2 = new JLabel("Kollumner");
     JComboBox combo1 = new JComboBox(radArray);
     JComboBox combo2 = new JComboBox(kolArray);
-    // j
 
     public Meny(JButton newGame, JButton shuffle, JButton cancel) {
         topPanel.setLayout(new BorderLayout());
