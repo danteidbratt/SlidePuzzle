@@ -46,18 +46,18 @@ public class Spelplan extends JPanel {
                 if(i % 2 == 0){
                     if (j % 2 == 0) {
                         brickor[i][j].setPermanentColor(Color.WHITE);
-//                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
                     } else {
                         brickor[i][j].setPermanentColor(Color.GRAY);
-//                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
                     }
                 } else {
                     if (j % 2 == 1) {
                         brickor[i][j].setPermanentColor(Color.WHITE);
-//                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
                     } else {
                         brickor[i][j].setPermanentColor(Color.GRAY);
-//                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+                        brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
                     }
                 }
                 if ((j == brickor[i].length - 2) && (i == brickor.length - 2)) {
