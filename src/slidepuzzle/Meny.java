@@ -70,19 +70,19 @@ public class Meny extends JPanel {
         
         midPanel.setLayout(new GridLayout(4, 2));
         boxText1.setHorizontalAlignment(SwingConstants.CENTER);
-        boxText1.setVerticalAlignment(SwingConstants.TOP);
+        boxText1.setVerticalAlignment(SwingConstants.BOTTOM);
         boxText2.setHorizontalAlignment(SwingConstants.CENTER);
-        boxText2.setVerticalAlignment(SwingConstants.TOP);
+        boxText2.setVerticalAlignment(SwingConstants.BOTTOM);
         midPanel.setVisible(false);
 
         midPanel.add(boxText1);
         midPanel.add(boxText2);
         midPanel.add(combo1);
         midPanel.add(combo2);
-//        midPanel.add(new JLabel(""));
-//        midPanel.add(new JLabel(""));
-//        midPanel.add(new JLabel(""));
-//        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
         
         botPanel.setLayout(new GridLayout(3, 1));
         botPanel.add(shuffle);
