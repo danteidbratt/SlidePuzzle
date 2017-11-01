@@ -16,25 +16,19 @@ public class Meny extends JPanel {
     JPanel botPanel = new JPanel();
     JPanel radioPanel = new JPanel();
     ButtonGroup bg = new ButtonGroup();
-    JRadioButton radio1 = new JRadioButton("");
-    JRadioButton radio2 = new JRadioButton("");
-    JRadioButton radio3 = new JRadioButton("");
-    JRadioButton radio4 = new JRadioButton("");
+    JRadioButton radio1 = new JRadioButton("Nybörjare");
+    JRadioButton radio2 = new JRadioButton("Erfaren");
+    JRadioButton radio3 = new JRadioButton("Expert");
+    JRadioButton radio4 = new JRadioButton("Custom");
     JLabel boxText1 = new JLabel("Rader");
     JLabel boxText2 = new JLabel("Kollumner");
     JComboBox combo1 = new JComboBox(radArray);
     JComboBox combo2 = new JComboBox(kolArray);
-    JLabel empty1 = new JLabel("");
-    JLabel empty2 = new JLabel("");
-    JLabel empty3 = new JLabel("");
-    JLabel empty4 = new JLabel("");
-    JLabel empty5 = new JLabel("");
-    JLabel empty6 = new JLabel("");
-    JPanel textPanel = new JPanel();
-    JLabel text1 = new JLabel("Nybörjare");
-    JLabel text2 = new JLabel("Erfaren");
-    JLabel text3 = new JLabel("Expert");
-    JLabel text4 = new JLabel("Custom");
+//    JPanel textPanel = new JPanel();
+//    JLabel text1 = new JLabel("Nybörjare");
+//    JLabel text2 = new JLabel("Erfaren");
+//    JLabel text3 = new JLabel("Expert");
+//    JLabel text4 = new JLabel("Custom");
 
     public Meny(JButton newGame, JButton shuffle, JButton cancel) {
         topPanel.setLayout(new BorderLayout());
@@ -71,12 +65,12 @@ public class Meny extends JPanel {
         radioPanel.add(radio4);
         topPanel.add(radioPanel, BorderLayout.WEST);
 
-        textPanel.setLayout(new GridLayout(4, 1));
-        textPanel.add(text1);
-        textPanel.add(text2);
-        textPanel.add(text3);
-        textPanel.add(text4);
-        topPanel.add(textPanel, BorderLayout.CENTER);
+//        textPanel.setLayout(new GridLayout(4, 1));
+//        textPanel.add(text1);
+//        textPanel.add(text2);
+//        textPanel.add(text3);
+//        textPanel.add(text4);
+//        topPanel.add(textPanel, BorderLayout.CENTER);
         
         combo1.addActionListener((e) -> {
             rader = Integer.parseInt((String) combo1.getSelectedItem());
@@ -96,10 +90,10 @@ public class Meny extends JPanel {
         midPanel.add(boxText2);
         midPanel.add(combo1);
         midPanel.add(combo2);
-        midPanel.add(empty1);
-        midPanel.add(empty2);
-        midPanel.add(empty3);
-        midPanel.add(empty4);
+        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
+        midPanel.add(new JLabel(""));
         
         botPanel.setLayout(new GridLayout(3, 1));
         botPanel.add(shuffle);
