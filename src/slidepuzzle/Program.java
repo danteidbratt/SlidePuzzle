@@ -19,12 +19,9 @@ public class Program extends JFrame {
         setVisible(true);
         setSize(490, 340);
         setLocationRelativeTo(null);
-
         add(spelplan, BorderLayout.CENTER);
         add(meny, BorderLayout.WEST);
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         newGame.addActionListener((ActionEvent ae) -> {
             remove(spelplan);
             spelplan = new Spelplan(meny.getRader(), meny.getKollumner());
@@ -34,11 +31,9 @@ public class Program extends JFrame {
             revalidate();
             repaint();
         });
-        
         shuffle.addActionListener((e) -> {
             spelplan.shuffle();
         });
-        
         cancel.addActionListener((ActionEvent ae) -> {
             System.exit(0);
         });
