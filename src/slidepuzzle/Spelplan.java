@@ -108,17 +108,6 @@ public class Spelplan extends JPanel {
         }
     };
 
-    private void updatePuzzle() {
-        removeAll();
-        for (int i = 1; i < brickor.length - 1; i++) {
-            for (int j = 1; j < brickor[i].length - 1; j++) {
-                add(brickor[i][j]);
-            }
-        }
-        revalidate();
-        repaint();
-    }
-
     public void shuffle() {
         int a = (int) Math.pow(yLength * xLength, 2);
         for (int i = 0; i <= a; i++) {
@@ -181,6 +170,17 @@ public class Spelplan extends JPanel {
         }
         emptyX = clickedX;
         emptyY = clickedY;
+    }
+    
+    private void updatePuzzle() {
+        removeAll();
+        for (int i = 1; i < brickor.length - 1; i++) {
+            for (int j = 1; j < brickor[i].length - 1; j++) {
+                add(brickor[i][j]);
+            }
+        }
+        revalidate();
+        repaint();
     }
 
     private boolean isSolved() {
