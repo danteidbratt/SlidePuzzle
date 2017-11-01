@@ -6,12 +6,12 @@ import javax.swing.*;
 
 public class Program extends JFrame {
 
-    JButton newGame = new JButton("Nytt Spel");
-    JButton shuffle = new JButton("Blanda");
-    JButton cancel = new JButton("Avsluta");
+    private final JButton newGame = new JButton("Nytt Spel");
+    private final JButton shuffle = new JButton("Blanda");
+    private final JButton cancel = new JButton("Avsluta");
 
-    public Spelplan spelplan = new Spelplan(4, 4);
-    public Meny meny = new Meny(newGame, shuffle, cancel);
+    private Spelplan spelplan = new Spelplan(4, 4);
+    private final Meny meny = new Meny(newGame, shuffle, cancel);
 
     public void Komponenter() {
         setLayout(new BorderLayout());

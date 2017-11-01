@@ -3,7 +3,6 @@ package slidepuzzle;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 public class Meny extends JPanel {
@@ -38,7 +37,6 @@ public class Meny extends JPanel {
     JLabel text4 = new JLabel("Custom");
 
     public Meny(JButton newGame, JButton shuffle, JButton cancel) {
-        setLayout(new GridLayout(3, 1));
         topPanel.setLayout(new BorderLayout());
         bg.add(radio1);
         bg.add(radio2);
@@ -107,7 +105,12 @@ public class Meny extends JPanel {
         botPanel.add(shuffle);
         botPanel.add(newGame);
         botPanel.add(cancel);
-
+        
+        panelAdder();
+    }
+    
+    private void panelAdder(){
+        setLayout(new GridLayout(3, 1));
         add(topPanel);
         add(midPanel);
         add(botPanel);

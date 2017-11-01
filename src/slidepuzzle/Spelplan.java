@@ -17,9 +17,6 @@ public class Spelplan extends JPanel {
     int xLength;
     int yLength;
 
-    int xtom;
-    int ytom;
-
     public Spelplan(int rows, int cols) {
         xLength = cols;
         yLength = rows;
@@ -41,7 +38,7 @@ public class Spelplan extends JPanel {
         placeTiles();
     }
 
-    public void placeTiles() {
+    private void placeTiles() {
         int a = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
@@ -65,7 +62,7 @@ public class Spelplan extends JPanel {
                 }
                 if ((j == brickor[i].length - 2) && (i == brickor.length - 2)) {
                     brickor[i][j].setBackground(Color.BLACK);
-                    brickor[i][j].setText("");
+                    brickor[i][j].setText(String.valueOf(xLength*yLength));
                     brickor[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     emptyY = i;
                     emptyX = j;
@@ -99,7 +96,7 @@ public class Spelplan extends JPanel {
                             bricka.setBackground(bricka.getPermanentColor());
                         if (isMovable()) {
                             slide();
-                            move();
+                            updatePuzzle();
                             if (isSolved()) {
                                 JOptionPane.showMessageDialog(null, "Du vann!");
                             }
@@ -111,7 +108,7 @@ public class Spelplan extends JPanel {
         }
     };
 
-    public void move() {
+    private void updatePuzzle() {
         removeAll();
         for (int i = 1; i < brickor.length - 1; i++) {
             for (int j = 1; j < brickor[i].length - 1; j++) {
@@ -130,16 +127,16 @@ public class Spelplan extends JPanel {
                 this.clickedX = (int) (Math.random() * xLength + 1);
             }
             slide();
-            move();
+            updatePuzzle();
         }
     }
 
-    public boolean isMovable() {
+    private boolean isMovable() {
         return ((clickedX < emptyX || clickedX > emptyX) && (clickedY == emptyY))
                 || ((clickedY < emptyY || clickedY > emptyY) && (clickedX == emptyX));
     }
 
-    public void slide() {
+    private void slide() {
         Bricka[] tempBrickor = new Bricka[Math.abs(clickedY-emptyY + clickedX-emptyX)];
         int direction = 1;
         int step = 1;
@@ -186,18 +183,14 @@ public class Spelplan extends JPanel {
         emptyY = clickedY;
     }
 
-    public boolean isSolved() {
+    private boolean isSolved() {
         int x = 0;
         for (int i = 1; i < brickor.length - 1; i++) {
-            for (int j = 1; j < brickor[i].length - 1; j++) {
-                if (!brickor[i][j].getText().equals(String.valueOf(++x))) {
+            for (int j = 1; j < brickor[i].length - 1 ; j++) {
+                if (!brickor[i][j].getText().equals(String.valueOf(++x)))
                     return false;
-                }
-                if (x > xLength * yLength - 2) {
-                    return true;
-                }
             }
         }
-        return false;
+        return true;
     }
 }
